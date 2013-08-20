@@ -16,8 +16,7 @@ namespace MUAC_STAT
         public Main()
         {
             InitializeComponent();
-            MySql.Initialise();
-
+            MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
         }
 
         private void btnProcessFile_Click(object sender, EventArgs e)
@@ -62,6 +61,12 @@ namespace MUAC_STAT
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             MySql.CloseConnection();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Settings Form = new Settings();
+            Form.Show();
         }
     }
 }

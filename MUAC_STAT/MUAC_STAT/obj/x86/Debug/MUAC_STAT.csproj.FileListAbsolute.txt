@@ -7,3 +7,5 @@ C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\Gen
 C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.exe
 C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.pdb
+C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\bin\Debug\MUAC_STAT.exe.config
+C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.Settings.resources

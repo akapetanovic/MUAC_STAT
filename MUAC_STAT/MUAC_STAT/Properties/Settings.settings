@@ -1,7 +1,21 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MUAC_STAT.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MySqlServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">localhost</Value>
+    </Setting>
+    <Setting Name="MySqlLogin" Type="System.String" Scope="User">
+      <Value Profile="(Default)">root</Value>
+    </Setting>
+    <Setting Name="MySqlDatabase" Type="System.String" Scope="User">
+      <Value Profile="(Default)">cbs_stat</Value>
+    </Setting>
+    <Setting Name="MySqlTable" Type="System.String" Scope="User">
+      <Value Profile="(Default)">general</Value>
+    </Setting>
+    <Setting Name="TriggerLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\var\STATISTICS</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

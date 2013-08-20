@@ -15,12 +15,33 @@ namespace MUAC_STAT
             public static string login_name = "root";
             public static string server_name = "localhost";
             public static string database = "cbs_stat";
-            public static string table_name = "general";
+            public static string table_name = "general";  
         }
 
         public void CloseConnection()
         {
             MySQLconn.Close();
+        }
+
+        public void Is_Connection_OK()
+        {
+            // Set the connection string
+            connString = "server=" + MySQLConnetionString.server_name +
+               ";User Id=" + MySQLConnetionString.login_name + ";database=" + MySQLConnetionString.database;
+
+            // Open up the connection
+            MySQLconn = new MySqlConnection(connString);
+
+            try
+            {
+                MySQLconn.Open();
+                MessageBox.Show("Connection OK !");
+                MySQLconn.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Connection NOT OK !");
+            }
         }
 
         public void Commit_One_Flight(OneFlightDataSet Data_Set_One_Flight)
@@ -70,23 +91,31 @@ namespace MUAC_STAT
             return Time_In.Hour.ToString("00") + Time_In.Minute.ToString("00");
         }
 
-        public void Initialise()
+        public void Initialise(string server, string database, string login, string table)
         {
-            // Set the connection string
-            connString = "server=" + MySQLConnetionString.server_name +
-               ";User Id=" + MySQLConnetionString.login_name + ";database=" + MySQLConnetionString.database;
-
-            // Open up the connection
-            MySQLconn = new MySqlConnection(connString);
-
-            try
+            if (MySQLconn != null)
             {
-                MySQLconn.Open();
-                MessageBox.Show("Opened up MySQL connection " + connString);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("My SQL Error: " + "Can't connect to: " + connString);
+                if (MySQLconn.State == System.Data.ConnectionState.Open)
+                {
+                    MySQLconn.Close();
+                }
+
+                // Set the connection string
+                connString = "server=" + MySQLConnetionString.server_name +
+                   ";User Id=" + MySQLConnetionString.login_name + ";database=" + MySQLConnetionString.database;
+
+                // Open up the connection
+                MySQLconn = new MySqlConnection(connString);
+
+                try
+                {
+                    MySQLconn.Open();
+                    MessageBox.Show("Opened up MySQL connection " + connString);
+                }
+                catch
+                {
+                    MessageBox.Show("My SQL Error: " + "Can't connect to: " + connString);
+                }
             }
         }
     }
