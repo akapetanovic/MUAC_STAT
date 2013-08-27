@@ -6,48 +6,48 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using System.Reflection;
+using System.Threading;
 
 namespace MUAC_STAT
 {
     public partial class Main : Form
     {
-        MySqlWriter MySql = new MySqlWriter();
+        private string Previous_MySQL_Status = "GO";
 
         public Main()
         {
             InitializeComponent();
-            MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
         }
 
-        private void btnProcessFile_Click(object sender, EventArgs e)
+        public static string GetDate_Time_AS_YYMMDDHHMMSS(DateTime Time_In)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "|*.kml";
-            openFileDialog1.InitialDirectory = @"C:\var\Data Sample\AFR253_AA93347472_20130715074801\common\";
-            openFileDialog1.Title = "Open File to Read";
-
-            if (openFileDialog1.ShowDialog() != DialogResult.Cancel)
-            {
-                this.SourcePath.Text = openFileDialog1.FileName;
-            }
+            return Time_In.Year.ToString("00") + "/" + Time_In.Month.ToString("00") + "/" + Time_In.Day.ToString("00") + " " + Time_In.Hour.ToString("00") + ":" + Time_In.Minute.ToString("00") + ":" + Time_In.Second.ToString("00");
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
+            Update_History_Log(GetDate_Time_AS_YYMMDDHHMMSS(DateTime.Now) + " Starting APP");
+            Update_MySQL_Status("foo", Color.Green);
+            lblBatchLocation.Text = Properties.Settings.Default.TriggerLocation;
+            backgroundWorker1.RunWorkerAsync();
 
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             OneFlightDataSet DataSet = new OneFlightDataSet();
             DataSet.Populate_General_Data(this.SourcePath.Text);
-            MySql.Commit_One_Flight(DataSet);
 
+            MySqlWriter MySql = new MySqlWriter();
+            MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
+            MySql.Commit_One_Flight(DataSet);
+            MySql.CloseConnection();
 
             this.txtBoxDebug.Text = DataSet.ARCID + Environment.NewLine;
             this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.IFPLID + Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.ADEP +Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.ADES +Environment.NewLine;
+            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.ADEP + Environment.NewLine;
+            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.ADES + Environment.NewLine;
             this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.EOBD + Environment.NewLine;
             this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.EOBT + Environment.NewLine;
             this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.AIRLINE + Environment.NewLine;
@@ -60,13 +60,147 @@ namespace MUAC_STAT
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MySql.CloseConnection();
+
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Settings Form = new Settings();
             Form.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "|*.kml";
+            openFileDialog1.InitialDirectory = @"C:\var\Data Sample\AFR253_AA93347472_20130715074801\common\";
+            openFileDialog1.Title = "Open File to Read";
+
+            if (openFileDialog1.ShowDialog() != DialogResult.Cancel)
+            {
+                this.SourcePath.Text = openFileDialog1.FileName;
+            }
+        }
+
+        public void WriteLog(string text)
+        {
+            if (this.checkBoxHistoryLog.Checked)
+                this.checkBoxHistoryLog.Text = this.checkBoxHistoryLog.Text + Environment.NewLine + text;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            StreamWriter myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                myStream = new StreamWriter(saveFileDialog1.FileName);
+                foreach (object i in this.listBoxHistoryLog.Items)
+                {
+                    myStream.Write(i);
+                }
+                myStream.Close();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.listBoxHistoryLog.Items.Clear();
+        }
+
+        private void checkBoxHistoryLog_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxHistoryLog.Checked)
+            {
+                this.checkBoxHistoryLog.Text = "ON";
+                this.listBoxHistoryLog.Enabled = true;
+            }
+            else
+            {
+                this.checkBoxHistoryLog.Text = "OFF";
+                this.listBoxHistoryLog.Enabled = false;
+            }
+        }
+
+        private delegate void Update_MySQL_StatusDelegate(string text, Color color);
+        public void Update_MySQL_Status(string tex, Color color)
+        {
+            object propertyValue_Text;
+            object propertyValue_Color;
+            MySqlWriter MySql = new MySqlWriter();
+            if (MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable))
+            {
+                propertyValue_Text = "GO";
+                propertyValue_Color = Color.Green;
+            }
+            else
+            {
+                propertyValue_Text = "NOGO";
+                propertyValue_Color = Color.Red;
+            }
+
+            if (Previous_MySQL_Status != (string)propertyValue_Text)
+            {
+                Previous_MySQL_Status = (string)propertyValue_Text;
+                Update_History_Log(GetDate_Time_AS_YYMMDDHHMMSS(DateTime.Now) + " " + "MySQL Status: " + Previous_MySQL_Status);
+            }
+
+            MySql.CloseConnection();
+
+            if (this.lblMySQL_Status.InvokeRequired)
+            {
+                this.lblMySQL_Status.Invoke(new Update_MySQL_StatusDelegate(Update_MySQL_Status), new object[] { propertyValue_Text, propertyValue_Color });
+            }
+            else
+            {
+                this.lblMySQL_Status.Text = (string)propertyValue_Text;
+                this.lblMySQL_Status.BackColor = (Color)propertyValue_Color;
+            }
+        }
+
+        private delegate void Update_History_Log_Delegate(object propertyValue_Text);
+        public void Update_History_Log(object propertyValue_Text)
+        {
+            if (this.listBoxHistoryLog.InvokeRequired)
+            {
+                this.listBoxHistoryLog.Invoke(new Update_History_Log_Delegate(Update_History_Log), new object[] { propertyValue_Text });
+            }
+            else
+            {
+                this.listBoxHistoryLog.Items.Insert(0, propertyValue_Text);
+            }
+        }
+
+        private delegate void Update_BatchLabel_Delegate(object propertyValue_Text);
+        public void Update_BatchLabel(object propertyValue_Text)
+        {
+            if (this.lblBatchLocation.InvokeRequired)
+                this.lblBatchLocation.Invoke(new Update_BatchLabel_Delegate(Update_BatchLabel), new object[] { propertyValue_Text });
+            else
+                this.lblBatchLocation.Text = (string)propertyValue_Text;
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (true)
+            {
+                Update_MySQL_Status("foo", Color.Green);
+                Update_BatchLabel(Properties.Settings.Default.TriggerLocation);
+                Thread.Sleep(4000);
+            }
+        }
+
+        private void chkBoxBatchProcessing_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.chkBoxBatchProcessing.Checked)
+                this.chkBoxBatchProcessing.Text = "ON";
+            else
+                this.chkBoxBatchProcessing.Text = "OFF";
         }
     }
 }

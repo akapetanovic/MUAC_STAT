@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using System.Windows.Forms;
 
 namespace MUAC_STAT
 {
@@ -25,23 +26,32 @@ namespace MUAC_STAT
 
         public void Populate_General_Data(string Path)
         {
-            XmlTextReader xtr = new XmlTextReader(Path);
-            xtr.WhitespaceHandling = WhitespaceHandling.None;
-            xtr.Read(); // read the XML declaration node, advance to <suite> tag
 
-            //while (!xtr.EOF) //load loop
-            //{
-            //    // Parse the file
-            //    if (xtr.Name == "Data")
-            //    {
-            //        string attribute = xtr.GetAttribute("name");
-            //        xtr.Read();
-     
-            //        ARCID = xtr.ReadElementString(xtr.Name); 
-            //    }
+            try
+            {
+                XmlTextReader xtr = new XmlTextReader(Path);
+                xtr.WhitespaceHandling = WhitespaceHandling.None;
+                xtr.Read(); // read the XML declaration node, advance to <suite> tag
 
-            //    xtr.Read();
-            //}
+                //while (!xtr.EOF) //load loop
+                //{
+                //    // Parse the file
+                //    if (xtr.Name == "Data")
+                //    {
+                //        string attribute = xtr.GetAttribute("name");
+                //        xtr.Read();
+
+                //        ARCID = xtr.ReadElementString(xtr.Name); 
+                //    }
+
+                //    xtr.Read();
+                //}
+            }
+            catch (Exception e)
+            {
+                string Message = e.Source + ": " + e.Message;
+                MessageBox.Show(Message);
+            }
         }
     }
 }

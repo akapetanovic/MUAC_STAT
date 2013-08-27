@@ -28,7 +28,7 @@ namespace MUAC_STAT
         {
             MySqlWriter MySQL = new MySqlWriter();
             MySQL.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
-            MySQL.Is_Connection_OK();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,14 +48,11 @@ namespace MUAC_STAT
 
         private void button3_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "ASTERIX Analyser Files|*.rply";
-            openFileDialog1.InitialDirectory = "Application.StartupPath";
-            openFileDialog1.Title = "Open File to Read";
-
+            FolderBrowserDialog openFileDialog1 = new FolderBrowserDialog();
+            
             if (openFileDialog1.ShowDialog() != DialogResult.Cancel)
             {
-                textBoxTriggerLocation.Text = openFileDialog1.FileName;
+                textBoxTriggerLocation.Text = openFileDialog1.SelectedPath;
             }
         }
 
@@ -63,6 +60,7 @@ namespace MUAC_STAT
         {
             Properties.Settings.Default.TriggerLocation = this.textBoxTriggerLocation.Text;
             Properties.Settings.Default.Save();
+            this.Close();
         }
 
         private void button5_Click(object sender, EventArgs e)
