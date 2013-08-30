@@ -24,9 +24,9 @@ namespace MUAC_STAT
         public string DATE = "DATE";
 
 
-        public void Populate_General_Data(string Path)
+        public bool Populate_General_Data(string Path)
         {
-
+            bool Result = false;
             try
             {
                 XmlTextReader xtr = new XmlTextReader(Path);
@@ -41,7 +41,7 @@ namespace MUAC_STAT
                 //        string attribute = xtr.GetAttribute("name");
                 //        xtr.Read();
 
-                //        ARCID = xtr.ReadElementString(xtr.Name); 
+                //        ARCID = xtr.ReadElementString(xtr.Name);
                 //    }
 
                 //    xtr.Read();
@@ -51,7 +51,9 @@ namespace MUAC_STAT
             {
                 string Message = e.Source + ": " + e.Message;
                 MessageBox.Show(Message);
+                Result = false;
             }
+            return Result;
         }
     }
 }

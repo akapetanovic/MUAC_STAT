@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace MUAC_STAT
 {
-    public class MySqlWriter
+    public class MySqlHandler
     {
         private string connString;
         private MySqlConnection MySQLconn;
@@ -48,6 +48,50 @@ namespace MUAC_STAT
                 MessageBox.Show(e.Message);
             }
 
+        }
+
+        //Select statement
+        public List<OneFlightDataSet> SelectGeneralData()
+        {
+            string query = "SELECT * FROM " + MySQLConnetionString.table_name;
+
+            List<OneFlightDataSet> list = new List<OneFlightDataSet>();
+
+            //Open connection
+            if (MySQLconn.State == System.Data.ConnectionState.Open)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, MySQLconn);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                int index = 0;
+                while (dataReader.Read())
+                {
+                    OneFlightDataSet DataSet = new OneFlightDataSet();
+                    DataSet.IFPLID = (string)dataReader["IFPLID"];
+                    DataSet.ARCID = (string)dataReader["ARCID"];
+                    DataSet.ADEP = (string)dataReader["ADEP"];
+                    DataSet.ADES = (string)dataReader["ADES"];
+                    DataSet.ARCTYP = (string)dataReader["ARCTYP"];
+                    list.Add(DataSet);
+                    index++;
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+
+                //return list to be displayed
+                return list;
+            }
+            else
+            {
+                return list;
+            }
         }
 
         private double ConvertToUNIXTimestamp(DateTime value)

@@ -26,7 +26,7 @@ namespace MUAC_STAT
         }
         private void btnTest_Click(object sender, EventArgs e)
         {
-            MySqlWriter MySQL = new MySqlWriter();
+            MySqlHandler MySQL = new MySqlHandler();
             MySQL.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
 
         }

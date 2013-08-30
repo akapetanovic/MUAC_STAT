@@ -33,29 +33,37 @@ namespace MUAC_STAT
             lblBatchLocation.Text = Properties.Settings.Default.TriggerLocation;
             backgroundWorker1.RunWorkerAsync();
 
+            BatchModeHandler.EnableProcessing(this.chkBoxBatchProcessing.Checked);
+            BatchModeHandler.Initialise();
+        }
+
+        private void UpdateDataView()
+        {
+            MySqlHandler MySql = new MySqlHandler();
+            MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
+            List<OneFlightDataSet> DataList = MySql.SelectGeneralData();
+            dataGridViewGeneral.Rows.Clear();
+            foreach (OneFlightDataSet L in DataList)
+            {
+                string[] row = new string[] { L.IFPLID, L.ARCID, L.ADEP, L.ADES, L.ARCTYP };
+                dataGridViewGeneral.Rows.Add(row);
+            }
+
+            MySql.CloseConnection();
         }
         private void button1_Click(object sender, EventArgs e)
         {
             OneFlightDataSet DataSet = new OneFlightDataSet();
-            DataSet.Populate_General_Data(this.SourcePath.Text);
+            if (DataSet.Populate_General_Data(this.SourcePath.Text))
+            {
 
-            MySqlWriter MySql = new MySqlWriter();
-            MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
-            MySql.Commit_One_Flight(DataSet);
-            MySql.CloseConnection();
+                MySqlHandler MySql = new MySqlHandler();
+                MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
+                MySql.Commit_One_Flight(DataSet);
+                MySql.CloseConnection();
+            }
 
-            this.txtBoxDebug.Text = DataSet.ARCID + Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.IFPLID + Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.ADEP + Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.ADES + Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.EOBD + Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.EOBT + Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.AIRLINE + Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.ARCTYP + Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.MODE_S_ADDR + Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.RFL + Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.SPEED + Environment.NewLine;
-            this.txtBoxDebug.Text = this.txtBoxDebug.Text + DataSet.DATE + Environment.NewLine;
+            UpdateDataView();
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
@@ -124,6 +132,8 @@ namespace MUAC_STAT
                 this.checkBoxHistoryLog.Text = "OFF";
                 this.listBoxHistoryLog.Enabled = false;
             }
+
+            BatchModeHandler.EnableProcessing(this.chkBoxBatchProcessing.Checked);
         }
 
         private delegate void Update_MySQL_StatusDelegate(string text, Color color);
@@ -131,7 +141,7 @@ namespace MUAC_STAT
         {
             object propertyValue_Text;
             object propertyValue_Color;
-            MySqlWriter MySql = new MySqlWriter();
+            MySqlHandler MySql = new MySqlHandler();
             if (MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable))
             {
                 propertyValue_Text = "GO";
@@ -175,6 +185,11 @@ namespace MUAC_STAT
             }
         }
 
+        public void DisplayMessage(string Message)
+        {
+            this.listBoxHistoryLog.Items.Insert(0, Message);
+        }
+
         private delegate void Update_BatchLabel_Delegate(object propertyValue_Text);
         public void Update_BatchLabel(object propertyValue_Text)
         {
@@ -201,6 +216,16 @@ namespace MUAC_STAT
                 this.chkBoxBatchProcessing.Text = "ON";
             else
                 this.chkBoxBatchProcessing.Text = "OFF";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            UpdateDataView();
+        }
+
+        private void dataGridViewGeneral_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

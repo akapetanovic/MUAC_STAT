@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.txtBoxDebug = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -43,17 +42,24 @@
             this.button2 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chkBoxBatchProcessing = new System.Windows.Forms.CheckBox();
             this.lblBatchLocation = new System.Windows.Forms.Label();
+            this.chkBoxBatchProcessing = new System.Windows.Forms.CheckBox();
+            this.dataGridViewGeneral = new System.Windows.Forms.DataGridView();
+            this.IFPLID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ARCID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ADEP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ADES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ARCTYP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneral)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(884, 387);
+            this.button1.Location = new System.Drawing.Point(761, 387);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(69, 23);
             this.button1.TabIndex = 0;
@@ -61,21 +67,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // txtBoxDebug
-            // 
-            this.txtBoxDebug.Location = new System.Drawing.Point(286, 28);
-            this.txtBoxDebug.Multiline = true;
-            this.txtBoxDebug.Name = "txtBoxDebug";
-            this.txtBoxDebug.Size = new System.Drawing.Size(667, 353);
-            this.txtBoxDebug.TabIndex = 3;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(965, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(842, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -164,12 +162,12 @@
             // 
             this.SourcePath.Location = new System.Drawing.Point(286, 387);
             this.SourcePath.Name = "SourcePath";
-            this.SourcePath.Size = new System.Drawing.Size(517, 20);
+            this.SourcePath.Size = new System.Drawing.Size(394, 20);
             this.SourcePath.TabIndex = 7;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(809, 387);
+            this.button2.Location = new System.Drawing.Point(686, 387);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(69, 23);
             this.button2.TabIndex = 8;
@@ -192,6 +190,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Batch Processing";
             // 
+            // lblBatchLocation
+            // 
+            this.lblBatchLocation.AutoSize = true;
+            this.lblBatchLocation.Location = new System.Drawing.Point(6, 16);
+            this.lblBatchLocation.Name = "lblBatchLocation";
+            this.lblBatchLocation.Size = new System.Drawing.Size(43, 13);
+            this.lblBatchLocation.TabIndex = 1;
+            this.lblBatchLocation.Text = "BATCH";
+            // 
             // chkBoxBatchProcessing
             // 
             this.chkBoxBatchProcessing.AutoSize = true;
@@ -205,26 +212,57 @@
             this.chkBoxBatchProcessing.UseVisualStyleBackColor = true;
             this.chkBoxBatchProcessing.CheckedChanged += new System.EventHandler(this.chkBoxBatchProcessing_CheckedChanged);
             // 
-            // lblBatchLocation
+            // dataGridViewGeneral
             // 
-            this.lblBatchLocation.AutoSize = true;
-            this.lblBatchLocation.Location = new System.Drawing.Point(6, 16);
-            this.lblBatchLocation.Name = "lblBatchLocation";
-            this.lblBatchLocation.Size = new System.Drawing.Size(43, 13);
-            this.lblBatchLocation.TabIndex = 1;
-            this.lblBatchLocation.Text = "BATCH";
+            this.dataGridViewGeneral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGeneral.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IFPLID,
+            this.ARCID,
+            this.ADEP,
+            this.ADES,
+            this.ARCTYP});
+            this.dataGridViewGeneral.Location = new System.Drawing.Point(286, 43);
+            this.dataGridViewGeneral.Name = "dataGridViewGeneral";
+            this.dataGridViewGeneral.Size = new System.Drawing.Size(544, 332);
+            this.dataGridViewGeneral.TabIndex = 11;
+            this.dataGridViewGeneral.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGeneral_CellContentClick);
+            // 
+            // IFPLID
+            // 
+            this.IFPLID.HeaderText = "IFPLID";
+            this.IFPLID.Name = "IFPLID";
+            // 
+            // ARCID
+            // 
+            this.ARCID.HeaderText = "ARCID";
+            this.ARCID.Name = "ARCID";
+            // 
+            // ADEP
+            // 
+            this.ADEP.HeaderText = "ADEP";
+            this.ADEP.Name = "ADEP";
+            // 
+            // ADES
+            // 
+            this.ADES.HeaderText = "ADES";
+            this.ADES.Name = "ADES";
+            // 
+            // ARCTYP
+            // 
+            this.ARCTYP.HeaderText = "ARCTYP";
+            this.ARCTYP.Name = "ARCTYP";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(965, 416);
+            this.ClientSize = new System.Drawing.Size(842, 416);
+            this.Controls.Add(this.dataGridViewGeneral);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.SourcePath);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtBoxDebug);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -240,6 +278,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneral)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,7 +287,6 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtBoxDebug;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -264,6 +302,12 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox chkBoxBatchProcessing;
         private System.Windows.Forms.Label lblBatchLocation;
+        private System.Windows.Forms.DataGridView dataGridViewGeneral;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IFPLID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ARCID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ADEP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ADES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ARCTYP;
     }
 }
 
