@@ -45,7 +45,7 @@ namespace MUAC_STAT
             dataGridViewGeneral.Rows.Clear();
             foreach (OneFlightDataSet L in DataList)
             {
-                string[] row = new string[] { L.IFPLID, L.ARCID, L.ADEP, L.ADES, L.ARCTYP };
+                string[] row = new string[] { L.ARCID, L.IFPLID, L.ADEP, L.ADES, L.EOBD, L.EOBT, L.AIRLINE, L.ARCTYP, L.MODE_S_ADDR, L.RFL, L.SPEED };
                 dataGridViewGeneral.Rows.Add(row);
             }
 
@@ -54,15 +54,14 @@ namespace MUAC_STAT
         private void button1_Click(object sender, EventArgs e)
         {
             OneFlightDataSet DataSet = new OneFlightDataSet();
+            MySqlHandler MySql = new MySqlHandler();
             if (DataSet.Populate_General_Data(this.SourcePath.Text))
             {
-
-                MySqlHandler MySql = new MySqlHandler();
                 MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
                 MySql.Commit_One_Flight(DataSet);
                 MySql.CloseConnection();
             }
-
+           
             UpdateDataView();
         }
 

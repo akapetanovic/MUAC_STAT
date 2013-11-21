@@ -27,12 +27,18 @@ namespace MUAC_STAT
         {
 
             string query = "INSERT INTO " + MySQLConnetionString.table_name +
-                " (IFPLID, ARCID, ADEP, ADES, ARCTYP) " +
+                " (IFPLID, ARCID, ADEP, ADES, ARCTYP, EOBD, EOBT, AIRLINE, ARCADDR, RFL, SPEED) " +
                 " VALUES (" + Get_With_Quitation(Data_Set_One_Flight.IFPLID) + "," +
                              Get_With_Quitation(Data_Set_One_Flight.ARCID) + "," +
                              Get_With_Quitation(Data_Set_One_Flight.ADEP) + "," +
                              Get_With_Quitation(Data_Set_One_Flight.ADES) + "," +
-                             Get_With_Quitation(Data_Set_One_Flight.ARCTYP) + ")";
+                             Get_With_Quitation(Data_Set_One_Flight.ARCTYP) + "," +
+                             Get_With_Quitation(Data_Set_One_Flight.EOBD) + "," +
+                             Get_With_Quitation(Data_Set_One_Flight.EOBT) + "," +
+                             Get_With_Quitation(Data_Set_One_Flight.AIRLINE) + "," +
+                             Get_With_Quitation(Data_Set_One_Flight.MODE_S_ADDR) + "," +
+                             Get_With_Quitation(Data_Set_One_Flight.RFL) + "," +
+                             Get_With_Quitation(Data_Set_One_Flight.SPEED) +  ")";
 
 
             //create command and assign the query and connection from the constructor
@@ -75,6 +81,13 @@ namespace MUAC_STAT
                     DataSet.ADEP = (string)dataReader["ADEP"];
                     DataSet.ADES = (string)dataReader["ADES"];
                     DataSet.ARCTYP = (string)dataReader["ARCTYP"];
+                    DataSet.ARCTYP = (string)dataReader["EOBD"];
+                    DataSet.ARCTYP = (string)dataReader["EOBT"];
+                    DataSet.ARCTYP = (string)dataReader["AIRLINE"];
+                    DataSet.ARCTYP = (string)dataReader["ARCADDR"];
+                    DataSet.ARCTYP = (string)dataReader["RFL"];
+                    DataSet.ARCTYP = (string)dataReader["SPEED"];
+
                     list.Add(DataSet);
                     index++;
                 }

@@ -9,19 +9,19 @@ namespace MUAC_STAT
 {
     public class OneFlightDataSet
     {
-        public string ARCID = "ARCID";
-        public string IFPLID = "IFPLID";
-        public string ADEP = "ADEP";
-        public string ADES = "ADES";
-        public string EOBD = "EOBD";
-        public string EOBT = "EOBT";
+        public string ARCID = "NULL";
+        public string IFPLID = "NULL";
+        public string ADEP = "NULL";
+        public string ADES = "NULL";
+        public string EOBD = "NULL";
+        public string EOBT = "NULL";
 
-        public string AIRLINE = "AIRLINE";
-        public string ARCTYP = "ARCTYP";
-        public string MODE_S_ADDR = "MODE_S_ADD";
-        public string RFL = "RFL";
-        public string SPEED = "SPEED";
-        public string DATE = "DATE";
+        public string AIRLINE = "NULL";
+        public string ARCTYP = "NULL";
+        public string MODE_S_ADDR = "NULL";
+        public string RFL = "NULL";
+        public string SPEED = "NULL";
+        public string DATE = "NULL";
 
 
         public bool Populate_General_Data(string Path)

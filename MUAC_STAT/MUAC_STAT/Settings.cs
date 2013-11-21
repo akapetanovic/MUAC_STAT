@@ -27,7 +27,14 @@ namespace MUAC_STAT
         private void btnTest_Click(object sender, EventArgs e)
         {
             MySqlHandler MySQL = new MySqlHandler();
-            MySQL.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
+            if (MySQL.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable))
+            {
+                MessageBox.Show("Connection OK !");
+            }
+            else
+            {
+                MessageBox.Show("Connection NOT OK !");
+            }
 
         }
 
