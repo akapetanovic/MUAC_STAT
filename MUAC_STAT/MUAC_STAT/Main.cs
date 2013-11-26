@@ -79,7 +79,7 @@ namespace MUAC_STAT
         private void button2_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "|*.kml";
+            openFileDialog1.Filter = "|*.xml";
             openFileDialog1.InitialDirectory = @"C:\var\Data Sample\AFR253_AA93347472_20130715074801\common\";
             openFileDialog1.Title = "Open File to Read";
 

@@ -26,26 +26,25 @@ namespace MUAC_STAT
 
         public bool Populate_General_Data(string Path)
         {
-            bool Result = false;
+            bool Result = true;
             try
             {
                 XmlTextReader xtr = new XmlTextReader(Path);
                 xtr.WhitespaceHandling = WhitespaceHandling.None;
-                xtr.Read(); // read the XML declaration node, advance to <suite> tag
+                xtr.Read();
 
-                //while (!xtr.EOF) //load loop
-                //{
-                //    // Parse the file
-                //    if (xtr.Name == "Data")
-                //    {
-                //        string attribute = xtr.GetAttribute("name");
-                //        xtr.Read();
-
-                //        ARCID = xtr.ReadElementString(xtr.Name);
-                //    }
-
-                //    xtr.Read();
-                //}
+                while (xtr.Read()) //load loop
+                {
+                    // Parse the file
+                    if (xtr.Name == "ARCID")
+                    {
+                        ARCID = xtr.ReadString();
+                    }
+                    else if (xtr.Name == "IFPLD")
+                    {
+                        IFPLID = xtr.ReadString();
+                    }
+                }
             }
             catch (Exception e)
             {
