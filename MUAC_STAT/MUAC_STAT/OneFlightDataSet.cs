@@ -23,7 +23,6 @@ namespace MUAC_STAT
         public string SPEED = "NULL";
         public string DATE = "NULL";
 
-
         public bool Populate_General_Data(string Path)
         {
             bool Result = true;
@@ -37,13 +36,27 @@ namespace MUAC_STAT
                 {
                     // Parse the file
                     if (xtr.Name == "ARCID")
-                    {
                         ARCID = xtr.ReadString();
-                    }
-                    else if (xtr.Name == "IFPLD")
-                    {
+                    else if (xtr.Name == "IFPLID")
                         IFPLID = xtr.ReadString();
-                    }
+                    else if (xtr.Name == "ADEP")
+                        ADEP = xtr.ReadString();
+                    else if (xtr.Name == "ADES")
+                        ADES = xtr.ReadString();
+                    else if (xtr.Name == "EOBD")
+                        EOBD = xtr.ReadString();
+                    else if (xtr.Name == "EOBT")
+                        EOBT = xtr.ReadString();
+                    else if (xtr.Name == "OPR")
+                        AIRLINE = xtr.ReadString();
+                    else if (xtr.Name == "ARCTYPE")
+                        ARCTYP = xtr.ReadString();
+                    else if (xtr.Name == "ARCADDR")
+                        MODE_S_ADDR = xtr.ReadString();
+                    else if (xtr.Name == "RFL")
+                        RFL = xtr.ReadString();
+                    else if (xtr.Name == "SPEED")
+                        SPEED = xtr.ReadString();
                 }
             }
             catch (Exception e)

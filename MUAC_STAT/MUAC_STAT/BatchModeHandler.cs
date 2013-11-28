@@ -75,13 +75,13 @@ namespace MUAC_STAT
                             }
                         }
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         
                     }
                 }
             }
-            catch (Exception exx)
+            catch 
             {
                 
             }

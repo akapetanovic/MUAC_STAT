@@ -81,12 +81,12 @@ namespace MUAC_STAT
                     DataSet.ADEP = (string)dataReader["ADEP"];
                     DataSet.ADES = (string)dataReader["ADES"];
                     DataSet.ARCTYP = (string)dataReader["ARCTYP"];
-                    DataSet.ARCTYP = (string)dataReader["EOBD"];
-                    DataSet.ARCTYP = (string)dataReader["EOBT"];
-                    DataSet.ARCTYP = (string)dataReader["AIRLINE"];
-                    DataSet.ARCTYP = (string)dataReader["ARCADDR"];
-                    DataSet.ARCTYP = (string)dataReader["RFL"];
-                    DataSet.ARCTYP = (string)dataReader["SPEED"];
+                    DataSet.EOBD = (string)dataReader["EOBD"];
+                    DataSet.EOBT = (string)dataReader["EOBT"];
+                    DataSet.AIRLINE = (string)dataReader["AIRLINE"];
+                    DataSet.MODE_S_ADDR = (string)dataReader["ARCADDR"];
+                    DataSet.RFL = (string)dataReader["RFL"];
+                    DataSet.SPEED = (string)dataReader["SPEED"];
 
                     list.Add(DataSet);
                     index++;

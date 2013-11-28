@@ -108,6 +108,7 @@
             this.lblMySQL_Status.Size = new System.Drawing.Size(23, 13);
             this.lblMySQL_Status.TabIndex = 1;
             this.lblMySQL_Status.Text = "GO";
+            this.lblMySQL_Status.Click += new System.EventHandler(this.lblMySQL_Status_Click);
             // 
             // groupBox2
             // 
@@ -121,6 +122,7 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "History log";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // listBoxHistoryLog
             // 
@@ -170,6 +172,7 @@
             this.SourcePath.Name = "SourcePath";
             this.SourcePath.Size = new System.Drawing.Size(564, 20);
             this.SourcePath.TabIndex = 7;
+            this.SourcePath.TextChanged += new System.EventHandler(this.SourcePath_TextChanged);
             // 
             // button2
             // 
@@ -195,6 +198,7 @@
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Batch Processing";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // lblBatchLocation
             // 

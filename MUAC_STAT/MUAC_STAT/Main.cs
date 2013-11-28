@@ -226,5 +226,25 @@ namespace MUAC_STAT
         {
 
         }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SourcePath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMySQL_Status_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
