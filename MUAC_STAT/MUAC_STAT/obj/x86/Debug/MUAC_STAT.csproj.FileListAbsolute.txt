@@ -21,3 +21,17 @@ C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\bin\Debug\MUAC_ST
 C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.exe.manifest
 C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.application
 C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.csproj.GenerateResource.Cache
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\bin\Debug\MUAC_STAT.exe.config
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.exe
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.pdb
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\bin\Debug\MUAC_STAT.exe.manifest
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\bin\Debug\MUAC_STAT.application
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\bin\Debug\MUAC_STAT.exe
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\bin\Debug\MUAC_STAT.pdb
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\bin\Debug\MySql.Data.dll
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.Main.resources
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.Settings.resources
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.Properties.Resources.resources
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.csproj.GenerateResource.Cache
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.exe.manifest
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.application

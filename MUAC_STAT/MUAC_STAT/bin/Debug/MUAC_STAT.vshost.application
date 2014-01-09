@@ -8,14 +8,14 @@
     <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="MUAC_STAT.exe.manifest" size="3716">
+    <dependentAssembly dependencyType="install" codebase="MUAC_STAT.exe.manifest" size="4084">
       <assemblyIdentity name="MUAC_STAT.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Odd3MW0t+makclVxO6u7fCl3kxg=</dsig:DigestValue>
+        <dsig:DigestValue>l8ZkCwVRJwrq0/UUFr7ec4NhDlw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -245,10 +245,14 @@ namespace MUAC_STAT
 
         private void btnClearDbm_Click(object sender, EventArgs e)
         {
-            MySqlHandler MySql = new MySqlHandler();
-            MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
-            MySql.ClearDatabase();
-            UpdateDataView();
+
+            if (MessageBox.Show("Please confirm that you want to delete all rows from the database", "Confirm all rows deletion", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                MySqlHandler MySql = new MySqlHandler();
+                MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
+                MySql.ClearDatabase();
+                UpdateDataView();
+            }
         }
     }
 }
