@@ -191,7 +191,7 @@
             this.groupBox2.Size = new System.Drawing.Size(371, 83);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Batch File Location";
+            this.groupBox2.Text = "Trigger File Location";
             // 
             // button5
             // 

@@ -35,17 +35,14 @@
             this.lblMySQL_Status = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listBoxHistoryLog = new System.Windows.Forms.ListBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.checkBoxHistoryLog = new System.Windows.Forms.CheckBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblBatchLocation = new System.Windows.Forms.Label();
             this.chkBoxBatchProcessing = new System.Windows.Forms.CheckBox();
             this.dataGridViewGeneral = new System.Windows.Forms.DataGridView();
-            this.ViewUpdateTimer = new System.Windows.Forms.Timer(this.components);
-            this.btnClearDbm = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.ARCID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IFPLID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ADEP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +54,9 @@
             this.ARCADDR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SPEED = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViewUpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.btnClearDbm = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.checkBoxDeleteTriggerFile = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -123,16 +123,6 @@
             this.listBoxHistoryLog.Size = new System.Drawing.Size(249, 238);
             this.listBoxHistoryLog.TabIndex = 4;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(19, 387);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(249, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Save Log";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -156,6 +146,16 @@
             this.checkBoxHistoryLog.Text = "ON";
             this.checkBoxHistoryLog.UseVisualStyleBackColor = true;
             this.checkBoxHistoryLog.CheckedChanged += new System.EventHandler(this.checkBoxHistoryLog_CheckedChanged);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(19, 387);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(249, 23);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Save Log";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // backgroundWorker1
             // 
@@ -213,30 +213,6 @@
             this.dataGridViewGeneral.Size = new System.Drawing.Size(739, 368);
             this.dataGridViewGeneral.TabIndex = 11;
             this.dataGridViewGeneral.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGeneral_CellContentClick);
-            // 
-            // ViewUpdateTimer
-            // 
-            this.ViewUpdateTimer.Interval = 1000;
-            this.ViewUpdateTimer.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // btnClearDbm
-            // 
-            this.btnClearDbm.Location = new System.Drawing.Point(899, 1);
-            this.btnClearDbm.Name = "btnClearDbm";
-            this.btnClearDbm.Size = new System.Drawing.Size(101, 23);
-            this.btnClearDbm.TabIndex = 12;
-            this.btnClearDbm.Text = "Clear Database";
-            this.btnClearDbm.UseVisualStyleBackColor = true;
-            this.btnClearDbm.Click += new System.EventHandler(this.btnClearDbm_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Processing ";
             // 
             // ARCID
             // 
@@ -304,6 +280,30 @@
             this.SPEED.Name = "SPEED";
             this.SPEED.Width = 60;
             // 
+            // ViewUpdateTimer
+            // 
+            this.ViewUpdateTimer.Interval = 1000;
+            this.ViewUpdateTimer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnClearDbm
+            // 
+            this.btnClearDbm.Location = new System.Drawing.Point(924, 14);
+            this.btnClearDbm.Name = "btnClearDbm";
+            this.btnClearDbm.Size = new System.Drawing.Size(101, 23);
+            this.btnClearDbm.TabIndex = 12;
+            this.btnClearDbm.Text = "Clear Database";
+            this.btnClearDbm.UseVisualStyleBackColor = true;
+            this.btnClearDbm.Click += new System.EventHandler(this.btnClearDbm_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 70);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Processing ";
+            // 
             // checkBoxDeleteTriggerFile
             // 
             this.checkBoxDeleteTriggerFile.AutoSize = true;
@@ -332,7 +332,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
-            this.Text = "MUAC STATISTICS";
+            this.Text = "MUAC STATISTICS 1.0";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
