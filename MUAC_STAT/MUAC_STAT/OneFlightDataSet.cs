@@ -59,7 +59,7 @@ namespace MUAC_STAT
                         SPEED = xtr.ReadString();
                 }
             }
-            catch (Exception e)
+            catch
             {
                // string Message = e.Source + ": " + e.Message;
                // MessageBox.Show(Message);

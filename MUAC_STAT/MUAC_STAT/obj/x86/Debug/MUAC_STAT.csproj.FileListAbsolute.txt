@@ -22,8 +22,6 @@ C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUA
 C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.application
 C:\Users\AMER\Documents\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.csproj.GenerateResource.Cache
 C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\bin\Debug\MUAC_STAT.exe.config
-C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.exe
-C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.pdb
 C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\bin\Debug\MUAC_STAT.exe.manifest
 C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\bin\Debug\MUAC_STAT.application
 C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\bin\Debug\MUAC_STAT.exe
@@ -35,3 +33,5 @@ C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STA
 C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.csproj.GenerateResource.Cache
 C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.exe.manifest
 C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.application
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.exe
+C:\Users\Alma\Documents\Visual Studio 2010\Projects\MUAC_STAT\MUAC_STAT\MUAC_STAT\obj\x86\Debug\MUAC_STAT.pdb

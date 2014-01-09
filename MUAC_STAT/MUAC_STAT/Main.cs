@@ -14,7 +14,7 @@ namespace MUAC_STAT
 {
     public partial class Main : Form
     {
-        private string Previous_MySQL_Status = "GO";
+        private string Previous_MySQL_Status = "UNKNOWN";
 
         public Main()
         {
@@ -30,16 +30,18 @@ namespace MUAC_STAT
         {
             Update_History_Log(GetDate_Time_AS_YYMMDDHHMMSS(DateTime.Now) + " Starting APP");
             Update_MySQL_Status("foo", Color.Green);
+            Update_History_Log(GetDate_Time_AS_YYMMDDHHMMSS(DateTime.Now) + "My SQL Status: " + this.lblMySQL_Status.Text);
             lblBatchLocation.Text = Properties.Settings.Default.TriggerLocation;
             backgroundWorker1.RunWorkerAsync();
-            BatchModeHandler.EnableProcessing(this.chkBoxBatchProcessing.Checked);
-            BatchModeHandler.Initialise();
+            TriggerFileHandler.EnableProcessing(this.chkBoxBatchProcessing.Checked);
+            TriggerFileHandler.Initialise();
 
             UpdateDataView();
         }
 
         private void UpdateDataView()
         {
+           
             MySqlHandler MySql = new MySqlHandler();
             MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
             List<OneFlightDataSet> DataList = MySql.SelectGeneralData();
@@ -52,11 +54,7 @@ namespace MUAC_STAT
 
             MySql.CloseConnection();
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            BatchModeHandler.Handle_New_File(true, this.SourcePath.Text);
-            UpdateDataView();
-        }
+       
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -73,7 +71,6 @@ namespace MUAC_STAT
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             DialogResult result = fbd.ShowDialog();
-            this.SourcePath.Text = fbd.SelectedPath;
         }
 
         public void WriteLog(string text)
@@ -130,13 +127,19 @@ namespace MUAC_STAT
             {
                 propertyValue_Text = "GO";
                 propertyValue_Color = Color.Green;
+                ViewUpdateTimer.Enabled = true;
             }
             else
             {
                 propertyValue_Text = "NOGO";
                 propertyValue_Color = Color.Red;
+                ViewUpdateTimer.Enabled = false;
             }
 
+            if (Previous_MySQL_Status == "UNKNOWN")
+                Previous_MySQL_Status = (string)propertyValue_Text;
+
+     
             if (Previous_MySQL_Status != (string)propertyValue_Text)
             {
                 Previous_MySQL_Status = (string)propertyValue_Text;
@@ -190,7 +193,7 @@ namespace MUAC_STAT
             {
                 Update_MySQL_Status("foo", Color.Green);
                 Update_BatchLabel(Properties.Settings.Default.TriggerLocation);
-                Thread.Sleep(4000);
+                Thread.Sleep(3000);
             }
         }
 
@@ -201,7 +204,7 @@ namespace MUAC_STAT
             else
                 this.chkBoxBatchProcessing.Text = "OFF";
 
-            BatchModeHandler.EnableProcessing(this.chkBoxBatchProcessing.Checked);
+            TriggerFileHandler.EnableProcessing(this.chkBoxBatchProcessing.Checked);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -253,6 +256,14 @@ namespace MUAC_STAT
                 MySql.ClearDatabase();
                 UpdateDataView();
             }
+        }
+
+        private void checkBoxDeleteTriggerFile_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxDeleteTriggerFile.Checked)
+                Properties.Settings.Default.DeleteTriggerFile = true;
+            else
+                Properties.Settings.Default.DeleteTriggerFile = false;
         }
     }
 }
