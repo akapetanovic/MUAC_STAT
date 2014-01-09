@@ -61,9 +61,9 @@ namespace MUAC_STAT
             }
             catch (Exception e)
             {
-                string Message = e.Source + ": " + e.Message;
-                MessageBox.Show(Message);
-                Result = false;
+               // string Message = e.Source + ": " + e.Message;
+               // MessageBox.Show(Message);
+               // Result = false;
             }
             return Result;
         }

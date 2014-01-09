@@ -127,6 +127,27 @@ namespace MUAC_STAT
             return Time_In.Hour.ToString("00") + Time_In.Minute.ToString("00");
         }
 
+        public void ClearDatabase()
+        {
+
+            string query = "DELETE FROM " + MySQLConnetionString.table_name;
+
+
+            //create command and assign the query and connection from the constructor
+            MySqlCommand cmd = new MySqlCommand(query, MySQLconn);
+
+            try
+            {
+                //Execute command
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+        }
+
         public bool Initialise(string server, string database, string login, string table)
         {
             // Set the connection string

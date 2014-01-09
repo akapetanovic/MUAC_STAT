@@ -12,7 +12,7 @@ namespace MUAC_STAT
     {
         private static bool ProcessingEnabled = true;
         //List<string> MessageList = new List<string>();
-        
+
         private static StreamReader MyStreamReader;
         // Timer to periodically create EFD_Status.xml file
         // as status indication of the module.
@@ -22,7 +22,7 @@ namespace MUAC_STAT
 
         private static System.Timers.Timer System_Status_Timer;
 
-        public static void EnableProcessing (bool enable)
+        public static void EnableProcessing(bool enable)
         {
             ProcessingEnabled = enable;
         }
@@ -48,42 +48,72 @@ namespace MUAC_STAT
                     // First sync times
                     Previous_Cycle_Minute = Now.Minute;
                     System_Status_Timer.Enabled = false;
-                    Handle_New_File();
+                    Handle_New_File(false, null);
                     System_Status_Timer.Enabled = true;
                 }
             }
         }
 
-        public static void Handle_New_File()
+        public static void Handle_New_File(bool Is_User_Initiated, string Path_To_Files)
         {
             try
             {
-
-                string[] filePaths = Directory.GetFiles(Properties.Settings.Default.TriggerLocation, "*.*", SearchOption.AllDirectories);
-
-                foreach (string Path in filePaths)
+                string[] filePaths = null;
+                if (Is_User_Initiated == false)
                 {
-                    try
-                    {
-                        using (MyStreamReader = System.IO.File.OpenText(Path))
-                        {
-                            if (MyStreamReader != null)
-                            {
-                                MyStreamReader.Close();
-                                MyStreamReader.Dispose();
+                    filePaths = Directory.GetFiles(Properties.Settings.Default.TriggerLocation, "*.*", SearchOption.AllDirectories);
+                }
+                else
+                {
+                    filePaths = Directory.GetFiles(Path_To_Files, "*.*", SearchOption.AllDirectories);
+                }
 
+                if (filePaths.Length > 0)
+                {
+                    MySqlHandler MySql = new MySqlHandler();
+                    MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
+
+                    foreach (string Path in filePaths)
+                    {
+                        try
+                        {
+                            using (MyStreamReader = System.IO.File.OpenText(Path))
+                            {
+                                if (MyStreamReader != null)
+                                {
+                                    OneFlightDataSet DataSet = new OneFlightDataSet();
+
+                                    if (DataSet.Populate_General_Data(Path))
+                                    {
+                                        MySql.Commit_One_Flight(DataSet);
+                                    }
+
+                                    MyStreamReader.Close();
+                                    MyStreamReader.Dispose();
+                                }
+
+                                try
+                                {
+                                    System.IO.File.Delete(Path);
+                                }
+                                catch
+                                {
+                                    
+                                }
                             }
                         }
+                        catch
+                        {
+
+                        }
                     }
-                    catch
-                    {
-                        
-                    }
+
+                    MySql.CloseConnection();
                 }
             }
-            catch 
+            catch
             {
-                
+
             }
         }
     }

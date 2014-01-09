@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,6 +57,8 @@
             this.ARCADDR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SPEED = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnClearDbm = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -212,8 +215,6 @@
             // chkBoxBatchProcessing
             // 
             this.chkBoxBatchProcessing.AutoSize = true;
-            this.chkBoxBatchProcessing.Checked = true;
-            this.chkBoxBatchProcessing.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxBatchProcessing.Location = new System.Drawing.Point(96, 0);
             this.chkBoxBatchProcessing.Name = "chkBoxBatchProcessing";
             this.chkBoxBatchProcessing.Size = new System.Drawing.Size(42, 17);
@@ -309,11 +310,28 @@
             this.SPEED.Name = "SPEED";
             this.SPEED.Width = 60;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnClearDbm
+            // 
+            this.btnClearDbm.Location = new System.Drawing.Point(899, 1);
+            this.btnClearDbm.Name = "btnClearDbm";
+            this.btnClearDbm.Size = new System.Drawing.Size(101, 23);
+            this.btnClearDbm.TabIndex = 12;
+            this.btnClearDbm.Text = "Clear Database";
+            this.btnClearDbm.UseVisualStyleBackColor = true;
+            this.btnClearDbm.Click += new System.EventHandler(this.btnClearDbm_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1003, 416);
+            this.Controls.Add(this.btnClearDbm);
             this.Controls.Add(this.dataGridViewGeneral);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.button2);
@@ -371,6 +389,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ARCADDR;
         private System.Windows.Forms.DataGridViewTextBoxColumn RFL;
         private System.Windows.Forms.DataGridViewTextBoxColumn SPEED;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnClearDbm;
     }
 }
 

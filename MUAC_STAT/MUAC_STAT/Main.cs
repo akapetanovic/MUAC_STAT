@@ -32,9 +32,10 @@ namespace MUAC_STAT
             Update_MySQL_Status("foo", Color.Green);
             lblBatchLocation.Text = Properties.Settings.Default.TriggerLocation;
             backgroundWorker1.RunWorkerAsync();
-
             BatchModeHandler.EnableProcessing(this.chkBoxBatchProcessing.Checked);
             BatchModeHandler.Initialise();
+
+            UpdateDataView();
         }
 
         private void UpdateDataView()
@@ -53,15 +54,7 @@ namespace MUAC_STAT
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            OneFlightDataSet DataSet = new OneFlightDataSet();
-            MySqlHandler MySql = new MySqlHandler();
-            if (DataSet.Populate_General_Data(this.SourcePath.Text))
-            {
-                MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
-                MySql.Commit_One_Flight(DataSet);
-                MySql.CloseConnection();
-            }
-           
+            BatchModeHandler.Handle_New_File(true, this.SourcePath.Text);
             UpdateDataView();
         }
 
@@ -78,15 +71,9 @@ namespace MUAC_STAT
 
         private void button2_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "|*.xml";
-            openFileDialog1.InitialDirectory = @"C:\var\Data Sample\AFR253_AA93347472_20130715074801\common\";
-            openFileDialog1.Title = "Open File to Read";
-
-            if (openFileDialog1.ShowDialog() != DialogResult.Cancel)
-            {
-                this.SourcePath.Text = openFileDialog1.FileName;
-            }
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult result = fbd.ShowDialog();
+            this.SourcePath.Text = fbd.SelectedPath;
         }
 
         public void WriteLog(string text)
@@ -131,8 +118,6 @@ namespace MUAC_STAT
                 this.checkBoxHistoryLog.Text = "OFF";
                 this.listBoxHistoryLog.Enabled = false;
             }
-
-            BatchModeHandler.EnableProcessing(this.chkBoxBatchProcessing.Checked);
         }
 
         private delegate void Update_MySQL_StatusDelegate(string text, Color color);
@@ -215,6 +200,8 @@ namespace MUAC_STAT
                 this.chkBoxBatchProcessing.Text = "ON";
             else
                 this.chkBoxBatchProcessing.Text = "OFF";
+
+            BatchModeHandler.EnableProcessing(this.chkBoxBatchProcessing.Checked);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -245,6 +232,23 @@ namespace MUAC_STAT
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (this.chkBoxBatchProcessing.Enabled == true)
+            {
+                UpdateDataView();
+            }
+
+        }
+
+        private void btnClearDbm_Click(object sender, EventArgs e)
+        {
+            MySqlHandler MySql = new MySqlHandler();
+            MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
+            MySql.ClearDatabase();
+            UpdateDataView();
         }
     }
 }
