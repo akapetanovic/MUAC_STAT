@@ -42,29 +42,36 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="MySql.Data" version="6.6.5.0" publicKeyToken="C5687FC88969C44D" language="neutral" processorArchitecture="msil" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MUAC_STAT.exe" size="48128">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MUAC_STAT.exe" size="49664">
       <assemblyIdentity name="MUAC_STAT" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>MRh/ibo4///tUD5I6ufDasIF0eY=</dsig:DigestValue>
+        <dsig:DigestValue>Q+mS/NyUUAQMG8OwPJaWcxACBCM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="MUAC_STAT.exe.config" size="1782">
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MySql.Data.dll" size="391680">
+      <assemblyIdentity name="MySql.Data" version="6.6.5.0" publicKeyToken="C5687FC88969C44D" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>//IJ3Q0wovYWw1gpF/j55Wk4hUE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="MUAC_STAT.exe.config" size="1919">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>5fP3rmVGZNt52JNU8NBHj0gN//o=</dsig:DigestValue>
+      <dsig:DigestValue>t88dQJ/xIFk6q2mCATZyYLpVAvE=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

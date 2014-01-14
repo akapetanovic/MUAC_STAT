@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DEBUG\Write_Trajectory.cs" />
     <Compile Include="ExternalData\Trajectory.cs" />
     <Compile Include="ExternalData\Sector.cs" />
     <Compile Include="GEODETIC\Angle.cs" />

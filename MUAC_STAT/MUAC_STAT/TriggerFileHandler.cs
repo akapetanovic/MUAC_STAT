@@ -129,6 +129,17 @@ namespace MUAC_STAT
 
                                         Entry_Exit EX = new Entry_Exit();
                                         EX.DeterminePoints(Trajectory_Point_List, SectorBorder.Sector_List);
+                                        
+                                        /////////////////////////////////////////////////////////////////////
+                                        // DEBUG CODE, outputs data to KML file
+                                        List<GeoCordSystemDegMinSecUtilities.LatLongClass> Entry_Exit_Pair_List = new List<GeoCordSystemDegMinSecUtilities.LatLongClass>();
+                                        Entry_Exit_Pair_List.Add(EX.Entry_Point);
+                                        Entry_Exit_Pair_List.Add(EX.Exit_Point);
+
+                                        Write_Trajectory.Generate_Output(Trajectory_Point_List, "Trajectory_" + File_Path.Substring(File_Path.Length - 10));
+                                        Write_Trajectory.Generate_Output(Entry_Exit_Pair_List, "Entry_Exit_" + File_Path.Substring(File_Path.Length - 10));
+                                        //////////////////////////////////////////////////////////////////////
+                                        
                                         break;
                                     }
                                 }

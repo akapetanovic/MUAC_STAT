@@ -9,8 +9,8 @@ namespace MUAC_STAT
     {
         public bool Entry_Found = false;
         public bool Exit_Found = false;
-        GeoCordSystemDegMinSecUtilities.LatLongClass Entry_Point = new GeoCordSystemDegMinSecUtilities.LatLongClass();
-        GeoCordSystemDegMinSecUtilities.LatLongClass Exit_Point = new GeoCordSystemDegMinSecUtilities.LatLongClass();
+        public GeoCordSystemDegMinSecUtilities.LatLongClass Entry_Point = new GeoCordSystemDegMinSecUtilities.LatLongClass();
+        public GeoCordSystemDegMinSecUtilities.LatLongClass Exit_Point = new GeoCordSystemDegMinSecUtilities.LatLongClass();
 
         public void DeterminePoints(List<GeoCordSystemDegMinSecUtilities.LatLongClass> Trajectory_List, List<GeoCordSystemDegMinSecUtilities.LatLongClass> Sector_Point_List)
         {

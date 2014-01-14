@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MUAC_STAT.exe" size="49664">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MUAC_STAT.exe" size="29696">
       <assemblyIdentity name="MUAC_STAT" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Q+mS/NyUUAQMG8OwPJaWcxACBCM=</dsig:DigestValue>
+        <dsig:DigestValue>QN4Zbf5ShA6Ng6x0LUiI/OwDNrA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -65,13 +65,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="MUAC_STAT.exe.config" size="1919">
+  <file name="MUAC_STAT.exe.config" size="1470">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>t88dQJ/xIFk6q2mCATZyYLpVAvE=</dsig:DigestValue>
+      <dsig:DigestValue>O2bNu7IUujkSqgJEPlY9z18Kfqc=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

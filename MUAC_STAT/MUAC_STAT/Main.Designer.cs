@@ -210,7 +210,7 @@
             this.SPEED});
             this.dataGridViewGeneral.Location = new System.Drawing.Point(286, 43);
             this.dataGridViewGeneral.Name = "dataGridViewGeneral";
-            this.dataGridViewGeneral.Size = new System.Drawing.Size(739, 368);
+            this.dataGridViewGeneral.Size = new System.Drawing.Size(739, 188);
             this.dataGridViewGeneral.TabIndex = 11;
             this.dataGridViewGeneral.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGeneral_CellContentClick);
             // 
