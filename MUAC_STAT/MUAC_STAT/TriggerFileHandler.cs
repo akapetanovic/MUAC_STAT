@@ -5,6 +5,8 @@ using System.Text;
 using System.IO;
 using System.Threading;
 using System.Timers;
+using System.Xml;
+
 
 namespace MUAC_STAT
 {
@@ -88,9 +90,50 @@ namespace MUAC_STAT
 
                                 }
                             }
+
+                            // Now try to extract the trajectory from the actual track flown
+                            File_To_Look_For = Directory.GetFiles(File_Path + "\\TRACK", "TRACK_FlownTrack.kml", SearchOption.TopDirectoryOnly);
+
+                            if (File_To_Look_For.Length > 0)
+                            {
+                                XmlTextReader xtr = new XmlTextReader(File_To_Look_For[0]);
+                                xtr.WhitespaceHandling = WhitespaceHandling.None;
+                                xtr.Read();
+                                char[] delimiterChars = { '\n' };
+
+                                string Line;
+                                while (xtr.Read()) //load loop
+                                {
+                                    // Parse the file
+                                    if (xtr.Name == "coordinates")
+                                    {
+                                        Line = xtr.ReadString();
+                                        string New_Line = Line.Replace("\t", string.Empty);
+                                        string[] Words_One_Point = New_Line.Split(delimiterChars);
+
+                                        List<GeoCordSystemDegMinSecUtilities.LatLongClass> Trajectory_Point_List = new List<GeoCordSystemDegMinSecUtilities.LatLongClass>();
+
+                                        char[] One_Line_delimiterChars = { ',' };
+                                        foreach (string One_Line in Words_One_Point)
+                                        {
+                                            if (One_Line.Length > 1)
+                                            {
+                                                string[] One_Point_Data = One_Line.Split(One_Line_delimiterChars);
+                                                //LAT,LON,FL,TIME,SPEED
+                                                Trajectory_Point_List.Add(new GeoCordSystemDegMinSecUtilities.LatLongClass(double.Parse(One_Point_Data[0]), double.Parse(One_Point_Data[1]))); 
+                                            }
+                                        }
+
+                                        Sector SectorBorder = new Sector();
+                                        SectorBorder.Initialise();
+
+                                        Entry_Exit EX = new Entry_Exit();
+                                        EX.DeterminePoints(Trajectory_Point_List, SectorBorder.Sector_List);
+                                        break;
+                                    }
+                                }
+                            }
                         }
-
-
                     }
                 }
             }

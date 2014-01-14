@@ -15,7 +15,7 @@ namespace MUAC_STAT
     public partial class Main : Form
     {
         private string Previous_MySQL_Status = "UNKNOWN";
-        private Sector SectorBorder = new Sector();
+      
 
         public Main()
         {
@@ -36,16 +36,19 @@ namespace MUAC_STAT
             backgroundWorker1.RunWorkerAsync();
             TriggerFileHandler.EnableProcessing(this.chkBoxBatchProcessing.Checked);
             TriggerFileHandler.Initialise();
-            SectorBorder.Initialise();
+           
 
             //////////////////////////////////////////////
             // Test BLOCK
-         
-            Trajectory OneTrajectory = new Trajectory();
-            OneTrajectory.Initialise();
 
-            Entry_Exit EX = new Entry_Exit();
-            EX.DeterminePoints(OneTrajectory.Trajectory_Point_List, SectorBorder.Sector_List);
+            //Trajectory OneTrajectory = new Trajectory();
+            //OneTrajectory.Initialise();
+
+            //Sector SectorBorder = new Sector();
+            //SectorBorder.Initialise();
+
+            //Entry_Exit EX = new Entry_Exit();
+            //EX.DeterminePoints(OneTrajectory.Trajectory_Point_List, SectorBorder.Sector_List);
 
             //////////////////////////////////////////////
 
@@ -54,7 +57,7 @@ namespace MUAC_STAT
 
         private void UpdateDataView()
         {
-           
+
             MySqlHandler MySql = new MySqlHandler();
             MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
             List<OneFlightDataSet> DataList = MySql.SelectGeneralData();
@@ -67,7 +70,7 @@ namespace MUAC_STAT
 
             MySql.CloseConnection();
         }
-       
+
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -152,7 +155,7 @@ namespace MUAC_STAT
             if (Previous_MySQL_Status == "UNKNOWN")
                 Previous_MySQL_Status = (string)propertyValue_Text;
 
-     
+
             if (Previous_MySQL_Status != (string)propertyValue_Text)
             {
                 Previous_MySQL_Status = (string)propertyValue_Text;

@@ -97,7 +97,7 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="MySql\MySqlHandler.cs" />
+    <Compile Include="MySql\MySql_GeneralData_Handler.cs" />
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
