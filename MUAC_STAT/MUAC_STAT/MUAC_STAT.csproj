@@ -78,6 +78,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExternalData\Trajectory.cs" />
+    <Compile Include="ExternalData\Sector.cs" />
+    <Compile Include="GEODETIC\Angle.cs" />
+    <Compile Include="GEODETIC\Ellipsoid.cs" />
+    <Compile Include="GEODETIC\GeoCordSystem.cs" />
+    <Compile Include="GEODETIC\GeodeticCalculator.cs" />
+    <Compile Include="GEODETIC\GeodeticCurve.cs" />
+    <Compile Include="GEODETIC\GeodeticMeasurement.cs" />
+    <Compile Include="GEODETIC\GlobalCoordinates.cs" />
+    <Compile Include="GEODETIC\GlobalPosition.cs" />
+    <Compile Include="LOGIC\Entry_Exit.cs" />
+    <Compile Include="LOGIC\RayCastAlghoritym.cs" />
     <Compile Include="TriggerFileHandler.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -144,6 +156,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

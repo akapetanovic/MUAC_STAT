@@ -94,5 +94,29 @@ namespace MUAC_STAT.Properties {
                 this["DeleteTriggerFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\var\\STATISTICS\\DATA_SET\\Border.txt")]
+        public string Border {
+            get {
+                return ((string)(this["Border"]));
+            }
+            set {
+                this["Border"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\var\\STATISTICS\\DATA_SET\\Trajectory.txt")]
+        public string Trajectory {
+            get {
+                return ((string)(this["Trajectory"]));
+            }
+            set {
+                this["Trajectory"] = value;
+            }
+        }
     }
 }

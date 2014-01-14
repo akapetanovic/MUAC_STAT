@@ -15,6 +15,7 @@ namespace MUAC_STAT
     public partial class Main : Form
     {
         private string Previous_MySQL_Status = "UNKNOWN";
+        private Sector SectorBorder = new Sector();
 
         public Main()
         {
@@ -35,6 +36,18 @@ namespace MUAC_STAT
             backgroundWorker1.RunWorkerAsync();
             TriggerFileHandler.EnableProcessing(this.chkBoxBatchProcessing.Checked);
             TriggerFileHandler.Initialise();
+            SectorBorder.Initialise();
+
+            //////////////////////////////////////////////
+            // Test BLOCK
+         
+            Trajectory OneTrajectory = new Trajectory();
+            OneTrajectory.Initialise();
+
+            Entry_Exit EX = new Entry_Exit();
+            EX.DeterminePoints(OneTrajectory.Trajectory_Point_List, SectorBorder.Sector_List);
+
+            //////////////////////////////////////////////
 
             UpdateDataView();
         }
