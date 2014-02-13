@@ -42,18 +42,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblBatchLocation = new System.Windows.Forms.Label();
             this.chkBoxBatchProcessing = new System.Windows.Forms.CheckBox();
-            this.dataGridViewGeneral = new System.Windows.Forms.DataGridView();
-            this.ARCID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IFPLID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ADEP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ADES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EOBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EOBT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AIRLINE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ARCTYP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ARCADDR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RFL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SPEED = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.btnClearDbm = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,7 +50,6 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneral)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -71,7 +58,7 @@
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1030, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(474, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -87,7 +74,7 @@
             this.groupBox1.Controls.Add(this.lblMySQL_Status);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(268, 39);
+            this.groupBox1.Size = new System.Drawing.Size(337, 39);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "My SQL";
@@ -109,7 +96,7 @@
             this.groupBox2.Controls.Add(this.checkBoxHistoryLog);
             this.groupBox2.Location = new System.Drawing.Point(13, 92);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(267, 290);
+            this.groupBox2.Size = new System.Drawing.Size(449, 290);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "History log";
@@ -120,7 +107,7 @@
             this.listBoxHistoryLog.FormattingEnabled = true;
             this.listBoxHistoryLog.Location = new System.Drawing.Point(6, 51);
             this.listBoxHistoryLog.Name = "listBoxHistoryLog";
-            this.listBoxHistoryLog.Size = new System.Drawing.Size(249, 238);
+            this.listBoxHistoryLog.Size = new System.Drawing.Size(437, 238);
             this.listBoxHistoryLog.TabIndex = 4;
             // 
             // button3
@@ -128,7 +115,7 @@
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button3.Location = new System.Drawing.Point(6, 19);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(249, 20);
+            this.button3.Size = new System.Drawing.Size(437, 20);
             this.button3.TabIndex = 2;
             this.button3.Text = "Clear";
             this.button3.UseVisualStyleBackColor = true;
@@ -151,7 +138,7 @@
             // 
             this.button4.Location = new System.Drawing.Point(19, 387);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(249, 23);
+            this.button4.Size = new System.Drawing.Size(437, 23);
             this.button4.TabIndex = 3;
             this.button4.Text = "Save Log";
             this.button4.UseVisualStyleBackColor = true;
@@ -166,7 +153,7 @@
             this.groupBox3.Controls.Add(this.lblBatchLocation);
             this.groupBox3.Location = new System.Drawing.Point(13, 416);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(904, 33);
+            this.groupBox3.Size = new System.Drawing.Size(348, 33);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ESDM Trigger Location";
@@ -193,93 +180,6 @@
             this.chkBoxBatchProcessing.UseVisualStyleBackColor = true;
             this.chkBoxBatchProcessing.CheckedChanged += new System.EventHandler(this.chkBoxBatchProcessing_CheckedChanged);
             // 
-            // dataGridViewGeneral
-            // 
-            this.dataGridViewGeneral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewGeneral.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ARCID,
-            this.IFPLID,
-            this.ADEP,
-            this.ADES,
-            this.EOBD,
-            this.EOBT,
-            this.AIRLINE,
-            this.ARCTYP,
-            this.ARCADDR,
-            this.RFL,
-            this.SPEED});
-            this.dataGridViewGeneral.Location = new System.Drawing.Point(286, 43);
-            this.dataGridViewGeneral.Name = "dataGridViewGeneral";
-            this.dataGridViewGeneral.Size = new System.Drawing.Size(739, 188);
-            this.dataGridViewGeneral.TabIndex = 11;
-            this.dataGridViewGeneral.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGeneral_CellContentClick);
-            // 
-            // ARCID
-            // 
-            this.ARCID.HeaderText = "ARCID";
-            this.ARCID.Name = "ARCID";
-            this.ARCID.Width = 60;
-            // 
-            // IFPLID
-            // 
-            this.IFPLID.HeaderText = "IFPLID";
-            this.IFPLID.Name = "IFPLID";
-            this.IFPLID.Width = 90;
-            // 
-            // ADEP
-            // 
-            this.ADEP.HeaderText = "ADEP";
-            this.ADEP.Name = "ADEP";
-            this.ADEP.Width = 60;
-            // 
-            // ADES
-            // 
-            this.ADES.HeaderText = "ADES";
-            this.ADES.Name = "ADES";
-            this.ADES.Width = 60;
-            // 
-            // EOBD
-            // 
-            this.EOBD.HeaderText = "EOBD";
-            this.EOBD.Name = "EOBD";
-            this.EOBD.Width = 60;
-            // 
-            // EOBT
-            // 
-            this.EOBT.HeaderText = "EOBT";
-            this.EOBT.Name = "EOBT";
-            this.EOBT.Width = 60;
-            // 
-            // AIRLINE
-            // 
-            this.AIRLINE.HeaderText = "AIRLINE";
-            this.AIRLINE.Name = "AIRLINE";
-            this.AIRLINE.Width = 60;
-            // 
-            // ARCTYP
-            // 
-            this.ARCTYP.HeaderText = "ARCTYP";
-            this.ARCTYP.Name = "ARCTYP";
-            this.ARCTYP.Width = 60;
-            // 
-            // ARCADDR
-            // 
-            this.ARCADDR.HeaderText = "ARCADDR";
-            this.ARCADDR.Name = "ARCADDR";
-            this.ARCADDR.Width = 70;
-            // 
-            // RFL
-            // 
-            this.RFL.HeaderText = "RFL";
-            this.RFL.Name = "RFL";
-            this.RFL.Width = 60;
-            // 
-            // SPEED
-            // 
-            this.SPEED.HeaderText = "SPEED";
-            this.SPEED.Name = "SPEED";
-            this.SPEED.Width = 60;
-            // 
             // ViewUpdateTimer
             // 
             this.ViewUpdateTimer.Interval = 1000;
@@ -287,9 +187,9 @@
             // 
             // btnClearDbm
             // 
-            this.btnClearDbm.Location = new System.Drawing.Point(924, 14);
+            this.btnClearDbm.Location = new System.Drawing.Point(355, 33);
             this.btnClearDbm.Name = "btnClearDbm";
-            this.btnClearDbm.Size = new System.Drawing.Size(101, 23);
+            this.btnClearDbm.Size = new System.Drawing.Size(101, 33);
             this.btnClearDbm.TabIndex = 12;
             this.btnClearDbm.Text = "Clear Database";
             this.btnClearDbm.UseVisualStyleBackColor = true;
@@ -307,7 +207,7 @@
             // checkBoxDeleteTriggerFile
             // 
             this.checkBoxDeleteTriggerFile.AutoSize = true;
-            this.checkBoxDeleteTriggerFile.Location = new System.Drawing.Point(923, 428);
+            this.checkBoxDeleteTriggerFile.Location = new System.Drawing.Point(367, 428);
             this.checkBoxDeleteTriggerFile.Name = "checkBoxDeleteTriggerFile";
             this.checkBoxDeleteTriggerFile.Size = new System.Drawing.Size(105, 17);
             this.checkBoxDeleteTriggerFile.TabIndex = 2;
@@ -319,13 +219,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1030, 457);
+            this.ClientSize = new System.Drawing.Size(474, 457);
             this.Controls.Add(this.checkBoxDeleteTriggerFile);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClearDbm);
             this.Controls.Add(this.chkBoxBatchProcessing);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.dataGridViewGeneral);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -343,7 +242,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneral)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,21 +262,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox chkBoxBatchProcessing;
         private System.Windows.Forms.Label lblBatchLocation;
-        private System.Windows.Forms.DataGridView dataGridViewGeneral;
         private System.Windows.Forms.Timer ViewUpdateTimer;
         private System.Windows.Forms.Button btnClearDbm;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ARCID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IFPLID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ADEP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ADES;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EOBD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EOBT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AIRLINE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ARCTYP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ARCADDR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RFL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SPEED;
         private System.Windows.Forms.CheckBox checkBoxDeleteTriggerFile;
     }
 }

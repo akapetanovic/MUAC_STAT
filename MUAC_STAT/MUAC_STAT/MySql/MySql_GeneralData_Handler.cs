@@ -25,20 +25,30 @@ namespace MUAC_STAT
         }
         public void Commit_One_Flight(OneFlightDataSet Data_Set_One_Flight)
         {
+            //OID, ARCID, IFPLID, ADEP, ADES, EOBD, EOBT, ARCTYPE, REG, ARCADDR, F15, FLAG, TSTARTTIME, TENDTIME, TPOINTS, FLTSOURCE, FLTSTATE, LASTUPD, STATUS, CBSFLTSTATE
 
             string query = "INSERT INTO " + MySQLConnetionString.table_name +
-                " (IFPLID, ARCID, ADEP, ADES, ARCTYP, EOBD, EOBT, AIRLINE, ARCADDR, RFL, SPEED) " +
-                " VALUES (" + Get_With_Quitation(Data_Set_One_Flight.IFPLID) + "," +
-                             Get_With_Quitation(Data_Set_One_Flight.ARCID) + "," +
-                             Get_With_Quitation(Data_Set_One_Flight.ADEP) + "," +
-                             Get_With_Quitation(Data_Set_One_Flight.ADES) + "," +
-                             Get_With_Quitation(Data_Set_One_Flight.ARCTYP) + "," +
-                             Get_With_Quitation(Data_Set_One_Flight.EOBD) + "," +
-                             Get_With_Quitation(Data_Set_One_Flight.EOBT) + "," +
-                             Get_With_Quitation(Data_Set_One_Flight.AIRLINE) + "," +
-                             Get_With_Quitation(Data_Set_One_Flight.MODE_S_ADDR) + "," +
-                             Get_With_Quitation(Data_Set_One_Flight.RFL) + "," +
-                             Get_With_Quitation(Data_Set_One_Flight.SPEED) +  ")";
+                " (OID, ARCID, IFPLID, ADEP, ADES, EOBD, EOBT, ARCTYPE, REG, ARCADDR, F15, FLAG, TSTARTTIME, TENDTIME, TPOINTS, FLTSOURCE, FLTSTATE, LASTUPD, STATUS, CBSFLTSTATE) " +
+                " VALUES (" + Get_With_Quitation(Data_Set_One_Flight.OID) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.ARCID) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.IFPLID) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.ADEP) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.ADES) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.EOBD) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.EOBT) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.ARCTYPE) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.REG) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.ARCADDR) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.F15) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.FLAG) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.TSTARTTIME) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.TENDTIME) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.TPOINTS) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.FLTSOURCE) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.FLTSTATE) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.LASTUPD) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.STATUS) + "," +
+                              Get_With_Quitation(Data_Set_One_Flight.CBSFLTSTATE) + ")";
 
 
             //create command and assign the query and connection from the constructor
@@ -76,17 +86,27 @@ namespace MUAC_STAT
                 while (dataReader.Read())
                 {
                     OneFlightDataSet DataSet = new OneFlightDataSet();
-                    DataSet.IFPLID = (string)dataReader["IFPLID"];
+
+                    DataSet.OID = dataReader["OID"].ToString();
                     DataSet.ARCID = (string)dataReader["ARCID"];
+                    DataSet.IFPLID = (string)dataReader["IFPLID"];
                     DataSet.ADEP = (string)dataReader["ADEP"];
                     DataSet.ADES = (string)dataReader["ADES"];
-                    DataSet.ARCTYP = (string)dataReader["ARCTYP"];
                     DataSet.EOBD = (string)dataReader["EOBD"];
                     DataSet.EOBT = (string)dataReader["EOBT"];
-                    DataSet.AIRLINE = (string)dataReader["AIRLINE"];
-                    DataSet.MODE_S_ADDR = (string)dataReader["ARCADDR"];
-                    DataSet.RFL = (string)dataReader["RFL"];
-                    DataSet.SPEED = (string)dataReader["SPEED"];
+                    DataSet.ARCTYPE = (string)dataReader["ARCTYPE"];
+                    DataSet.REG = (string)dataReader["REG"];
+                    DataSet.ARCADDR = (string)dataReader["ARCADDR"];
+                    DataSet.F15 = (string)dataReader["F15"];
+                    DataSet.FLAG = (string)dataReader["FLAG"];
+                    DataSet.TSTARTTIME = dataReader["TSTARTTIME"].ToString();
+                    DataSet.TENDTIME = dataReader["TENDTIME"].ToString();
+                    DataSet.TPOINTS = (string)dataReader["TPOINTS"];
+                    DataSet.FLTSOURCE = (string)dataReader["FLTSOURCE"];
+                    DataSet.FLTSTATE = (string)dataReader["FLTSTATE"];
+                    DataSet.LASTUPD = dataReader["LASTUPD"].ToString();
+                    DataSet.STATUS = (string)dataReader["STATUS"];
+                    DataSet.CBSFLTSTATE = dataReader["CBSFLTSTATE"].ToString();
 
                     list.Add(DataSet);
                     index++;

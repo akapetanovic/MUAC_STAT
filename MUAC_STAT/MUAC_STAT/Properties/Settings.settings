@@ -26,8 +26,5 @@
     <Setting Name="Trajectory" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\var\STATISTICS\DATA_SET\Trajectory.txt</Value>
     </Setting>
-    <Setting Name="DEBUG" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\var\STATISTICS\DEBUG</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

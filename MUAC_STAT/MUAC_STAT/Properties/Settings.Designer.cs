@@ -118,17 +118,5 @@ namespace MUAC_STAT.Properties {
                 this["Trajectory"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\var\\STATISTICS\\DEBUG")]
-        public string DEBUG {
-            get {
-                return ((string)(this["DEBUG"]));
-            }
-            set {
-                this["DEBUG"] = value;
-            }
-        }
     }
 }

@@ -78,7 +78,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DEBUG\Write_Trajectory.cs" />
     <Compile Include="ExternalData\Trajectory.cs" />
     <Compile Include="ExternalData\Sector.cs" />
     <Compile Include="GEODETIC\Angle.cs" />
@@ -91,6 +90,10 @@
     <Compile Include="GEODETIC\GlobalPosition.cs" />
     <Compile Include="LOGIC\Entry_Exit.cs" />
     <Compile Include="LOGIC\RayCastAlghoritym.cs" />
+    <Compile Include="PenetrationPoints\Point4D.cs" />
+    <Compile Include="PenetrationPoints\Sector.cs" />
+    <Compile Include="PenetrationPoints\Sectors.cs" />
+    <Compile Include="PenetrationPoints\Trajectory.cs" />
     <Compile Include="TriggerFileHandler.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>

@@ -52,24 +52,26 @@ namespace MUAC_STAT
 
             //////////////////////////////////////////////
 
-            UpdateDataView();
+            //UpdateDataView();
         }
 
-        private void UpdateDataView()
-        {
+        //private void UpdateDataView()
+        //{
 
-            MySqlHandler MySql = new MySqlHandler();
-            MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
-            List<OneFlightDataSet> DataList = MySql.SelectGeneralData();
-            dataGridViewGeneral.Rows.Clear();
-            foreach (OneFlightDataSet L in DataList)
-            {
-                string[] row = new string[] { L.ARCID, L.IFPLID, L.ADEP, L.ADES, L.EOBD, L.EOBT, L.AIRLINE, L.ARCTYP, L.MODE_S_ADDR, L.RFL, L.SPEED };
-                dataGridViewGeneral.Rows.Add(row);
-            }
+        //    MySqlHandler MySql = new MySqlHandler();
+        //    MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
+        //    List<OneFlightDataSet> DataList = MySql.SelectGeneralData();
+        //    dataGridViewGeneral.Rows.Clear();
+        //    foreach (OneFlightDataSet L in DataList)
+        //    {
 
-            MySql.CloseConnection();
-        }
+        //        string[] row = new string[] { L.OID, L.ARCID, L.IFPLID, L.ADEP, L.ADES, L.EOBD, L.EOBT, L.ARCTYPE, L.REG, L.ARCADDR, L.F15, L.FLAG, L.TSTARTTIME, L.TENDTIME, L.TPOINTS, 
+        //        L.FLTSOURCE, L.FLTSTATE, L.LASTUPD, L.STATUS, L.CBSFLTSTATE};
+        //        dataGridViewGeneral.Rows.Add(row);
+        //    }
+
+        //    MySql.CloseConnection();
+        //}
 
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
@@ -225,7 +227,7 @@ namespace MUAC_STAT
 
         private void button5_Click(object sender, EventArgs e)
         {
-            UpdateDataView();
+           // UpdateDataView();
         }
 
         private void dataGridViewGeneral_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -257,7 +259,7 @@ namespace MUAC_STAT
         {
             if (this.chkBoxBatchProcessing.Enabled == true)
             {
-                UpdateDataView();
+               // UpdateDataView();
             }
 
         }
@@ -270,7 +272,7 @@ namespace MUAC_STAT
                 MySqlHandler MySql = new MySqlHandler();
                 MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
                 MySql.ClearDatabase();
-                UpdateDataView();
+                //UpdateDataView();
             }
         }
 

@@ -9,19 +9,26 @@ namespace MUAC_STAT
 {
     public class OneFlightDataSet
     {
+        public string OID = "NULL";
         public string ARCID = "NULL";
         public string IFPLID = "NULL";
         public string ADEP = "NULL";
         public string ADES = "NULL";
         public string EOBD = "NULL";
         public string EOBT = "NULL";
-
-        public string AIRLINE = "NULL";
-        public string ARCTYP = "NULL";
-        public string MODE_S_ADDR = "NULL";
-        public string RFL = "NULL";
-        public string SPEED = "NULL";
-        public string DATE = "NULL";
+        public string ARCTYPE = "NULL";
+        public string REG = "NULL";
+        public string ARCADDR = "NULL";
+        public string F15 = "NULL";
+        public string FLAG = "NULL";
+        public string TSTARTTIME = "NULL";
+        public string TENDTIME = "NULL";
+        public string TPOINTS = "NULL";
+        public string FLTSOURCE = "NULL";
+        public string FLTSTATE = "NULL";
+        public string LASTUPD = "NULL";
+        public string STATUS = "NULL";
+        public string CBSFLTSTATE = "NULL";
 
         public bool Populate_General_Data(string Path)
         {
@@ -35,7 +42,9 @@ namespace MUAC_STAT
                 while (xtr.Read()) //load loop
                 {
                     // Parse the file
-                    if (xtr.Name == "ARCID")
+                    if (xtr.Name == "OID")
+                        OID = xtr.ReadString();
+                    else if (xtr.Name == "ARCID")
                         ARCID = xtr.ReadString();
                     else if (xtr.Name == "IFPLID")
                         IFPLID = xtr.ReadString();
@@ -47,23 +56,39 @@ namespace MUAC_STAT
                         EOBD = xtr.ReadString();
                     else if (xtr.Name == "EOBT")
                         EOBT = xtr.ReadString();
-                    else if (xtr.Name == "OPR")
-                        AIRLINE = xtr.ReadString();
                     else if (xtr.Name == "ARCTYPE")
-                        ARCTYP = xtr.ReadString();
+                        ARCTYPE = xtr.ReadString();
+                    else if (xtr.Name == "REG")
+                        REG = xtr.ReadString();
                     else if (xtr.Name == "ARCADDR")
-                        MODE_S_ADDR = xtr.ReadString();
-                    else if (xtr.Name == "RFL")
-                        RFL = xtr.ReadString();
-                    else if (xtr.Name == "SPEED")
-                        SPEED = xtr.ReadString();
+                        ARCADDR = xtr.ReadString();
+                    else if (xtr.Name == "F15")
+                        F15 = xtr.ReadString();
+                    else if (xtr.Name == "FLAG")
+                        FLAG = xtr.ReadString();
+                    else if (xtr.Name == "TSTARTTIME")
+                        TSTARTTIME = xtr.ReadString();
+                    else if (xtr.Name == "TENDTIME")
+                        TENDTIME = xtr.ReadString();
+                    else if (xtr.Name == "TPOINTS")
+                        TPOINTS = xtr.ReadString();
+                    else if (xtr.Name == "FLTSOURCE")
+                        FLTSOURCE = xtr.ReadString();
+                    else if (xtr.Name == "FLTSTATE")
+                        FLTSTATE = xtr.ReadString();
+                    else if (xtr.Name == "LASTUPD")
+                        LASTUPD = xtr.ReadString();
+                    else if (xtr.Name == "STATUS")
+                        STATUS = xtr.ReadString();
+                    else if (xtr.Name == "CBSFLTSTATE")
+                        CBSFLTSTATE = xtr.ReadString();
                 }
             }
             catch
             {
-               // string Message = e.Source + ": " + e.Message;
-               // MessageBox.Show(Message);
-               // Result = false;
+                // string Message = e.Source + ": " + e.Message;
+                // MessageBox.Show(Message);
+                // Result = false;
             }
             return Result;
         }
