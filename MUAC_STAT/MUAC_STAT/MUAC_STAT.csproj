@@ -79,7 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSets\CalculatedlDataSet.cs" />
-    <Compile Include="ExternalData\Trajectory.cs" />
     <Compile Include="ExternalData\Sector.cs" />
     <Compile Include="GEODETIC\Angle.cs" />
     <Compile Include="GEODETIC\Ellipsoid.cs" />
@@ -90,6 +89,7 @@
     <Compile Include="GEODETIC\GlobalCoordinates.cs" />
     <Compile Include="GEODETIC\GlobalPosition.cs" />
     <Compile Include="MySql\MySql_CalculatedData_Handler.cs" />
+    <Compile Include="PenetrationPoints\Calculate_Penetration_Points.cs" />
     <Compile Include="PenetrationPoints\Point4D.cs" />
     <Compile Include="PenetrationPoints\Sector.cs" />
     <Compile Include="PenetrationPoints\Sectors.cs" />
