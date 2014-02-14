@@ -79,6 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSets\CalculatedlDataSet.cs" />
+    <Compile Include="Debug\Generate_KML.cs" />
+    <Compile Include="Debug\KML_Common.cs" />
     <Compile Include="ExternalData\Sector.cs" />
     <Compile Include="GEODETIC\Angle.cs" />
     <Compile Include="GEODETIC\Ellipsoid.cs" />

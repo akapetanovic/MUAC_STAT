@@ -153,11 +153,18 @@ namespace MUAC_STAT
                                         Calculate_Penetration_Points CPP = new Calculate_Penetration_Points();
                                         List<Sectors.Intersection> ip = CPP.Calculate(trajectory);
 
+                                        List<Generate_KML.Waypoint> WPT_List = new List<Generate_KML.Waypoint>();
                                         for (int i = 0; i < ip.Count; i++)
                                         {
-
+                                            Generate_KML.Waypoint WPT = new Generate_KML.Waypoint();
+                                            WPT.Flight_Level = ip[i].point.getAltitude().ToString();
+                                            WPT.Position.SetPosition(new GeoCordSystemDegMinSecUtilities.LatLongDecimal(ip[i].point.getLatitude(), ip[i].point.getLongitude()));
+                                            WPT.ETO = ip[i].point.getTime().ToString();
+                                            WPT_List.Add(WPT);
                                         }
-
+                                    
+                                        Generate_KML.Generate_Output(WPT_List);
+                                       
                                         break;
                                     }
                                 }
