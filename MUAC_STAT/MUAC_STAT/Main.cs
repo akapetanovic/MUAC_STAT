@@ -140,8 +140,8 @@ namespace MUAC_STAT
         {
             object propertyValue_Text;
             object propertyValue_Color;
-            MySqlHandler MySql = new MySqlHandler();
-            if (MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable))
+            MySqlGeneralDataHandler MySql = new MySqlGeneralDataHandler();
+            if (MySql.Initialise_General())
             {
                 propertyValue_Text = "GO";
                 propertyValue_Color = Color.Green;
@@ -267,11 +267,16 @@ namespace MUAC_STAT
         private void btnClearDbm_Click(object sender, EventArgs e)
         {
 
-            if (MessageBox.Show("Please confirm that you want to delete all rows from the database", "Confirm all rows deletion", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("Please confirm that you want to delete all data from the database", "Confirm all data deletion", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
-                MySqlHandler MySql = new MySqlHandler();
-                MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
-                MySql.ClearDatabase();
+                MySqlGeneralDataHandler MySql_General = new MySqlGeneralDataHandler();
+                MySql_General.Initialise_General();
+                MySql_General.ClearTable();
+
+                MySqlCalculatedDataHandler MySql_Calculated = new MySqlCalculatedDataHandler();
+                MySql_Calculated.Initialise_Calculated();
+                MySql_Calculated.ClearTable();
+
                 //UpdateDataView();
             }
         }

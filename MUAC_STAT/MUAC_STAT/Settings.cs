@@ -21,13 +21,16 @@ namespace MUAC_STAT
             this.textBoxDatabase.Text = Properties.Settings.Default.MySqlDatabase;
             this.textBoxLogin.Text = Properties.Settings.Default.MySqlLogin;
             this.textBoxServer.Text = Properties.Settings.Default.MySqlServer;
-            this.textBoxTable.Text = Properties.Settings.Default.MySqlTable;
             this.textBoxTriggerLocation.Text = Properties.Settings.Default.TriggerLocation;
+
+            this.txtCalculated.Text = Properties.Settings.Default.Calculated_Table;
+            this.txtCompletnes.Text = Properties.Settings.Default.Completnes_Table;
+            this.txtGeneral.Text = Properties.Settings.Default.General_Table;
         }
         private void btnTest_Click(object sender, EventArgs e)
         {
-            MySqlHandler MySQL = new MySqlHandler();
-            if (MySQL.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable))
+            MySqlGeneralDataHandler MySQL = new MySqlGeneralDataHandler();
+            if (MySQL.Initialise_General())
             {
                 MessageBox.Show("Connection OK !");
             }
@@ -43,7 +46,10 @@ namespace MUAC_STAT
             Properties.Settings.Default.MySqlDatabase = this.textBoxDatabase.Text;
             Properties.Settings.Default.MySqlLogin = this.textBoxLogin.Text;
             Properties.Settings.Default.MySqlServer = this.textBoxServer.Text;
-            Properties.Settings.Default.MySqlTable = this.textBoxTable.Text;
+            Properties.Settings.Default.General_Table = this.txtGeneral.Text;
+            Properties.Settings.Default.Completnes_Table = this.txtCompletnes.Text;
+            Properties.Settings.Default.Calculated_Table = this.txtCalculated.Text;
+
             Properties.Settings.Default.Save();
             this.Close();
         }

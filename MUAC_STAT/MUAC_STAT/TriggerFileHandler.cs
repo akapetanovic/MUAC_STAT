@@ -14,10 +14,7 @@ namespace MUAC_STAT
     public static class TriggerFileHandler
     {
         private static bool ProcessingEnabled = true;
-        //List<string> MessageList = new List<string>();
-
         private static StreamReader MyStreamReader;
-
         private static System.Timers.Timer System_Status_Timer;
 
         public static void EnableProcessing(bool enable)
@@ -73,13 +70,20 @@ namespace MUAC_STAT
                                     {
                                         if (MyStreamReader != null)
                                         {
-                                            OneFlightDataSet DataSet = new OneFlightDataSet();
+                                            GeneralDataSet DataSet = new GeneralDataSet();
                                             if (DataSet.Populate_General_Data(File_To_Look_For[0]))
                                             {
-                                                MySqlHandler MySql = new MySqlHandler();
-                                                MySql.Initialise(Properties.Settings.Default.MySqlServer, Properties.Settings.Default.MySqlLogin, Properties.Settings.Default.MySqlDatabase, Properties.Settings.Default.MySqlTable);
+                                                MySqlGeneralDataHandler MySql = new MySqlGeneralDataHandler();
+                                                MySql.Initialise_General();
                                                 MySql.Commit_One_Flight(DataSet);
                                                 MySql.CloseConnection();
+
+                                                MySqlCalculatedDataHandler MySql_Calculated = new MySqlCalculatedDataHandler();
+                                                MySql_Calculated.Initialise_Calculated();
+                                                CalculatedDataSet Calculated_DataSet = new CalculatedDataSet();
+                                                MySql_Calculated.Commit_One_Flight(Calculated_DataSet);
+                                                MySql_Calculated.CloseConnection();
+
                                             }
                                             MyStreamReader.Close();
                                             MyStreamReader.Dispose();
@@ -111,8 +115,6 @@ namespace MUAC_STAT
                                         Line = xtr.ReadString();
                                         string New_Line = Line.Replace("\t", string.Empty);
                                         string[] Words_One_Point = New_Line.Split(delimiterChars);
-
-                                     
 
                                         char[] One_Line_delimiterChars = { ',' };
                                         foreach (string One_Line in Words_One_Point)

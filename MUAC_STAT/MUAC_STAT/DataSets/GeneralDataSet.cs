@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace MUAC_STAT
 {
-    public class OneFlightDataSet
+    public class GeneralDataSet
     {
         public string OID = "NULL";
         public string ARCID = "NULL";

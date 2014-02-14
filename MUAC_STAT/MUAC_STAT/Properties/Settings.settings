@@ -11,9 +11,6 @@
     <Setting Name="MySqlDatabase" Type="System.String" Scope="User">
       <Value Profile="(Default)">cbs_stat</Value>
     </Setting>
-    <Setting Name="MySqlTable" Type="System.String" Scope="User">
-      <Value Profile="(Default)">general</Value>
-    </Setting>
     <Setting Name="TriggerLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\var\STATISTICS</Value>
     </Setting>
@@ -25,6 +22,15 @@
     </Setting>
     <Setting Name="Trajectory" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\var\STATISTICS\DATA_SET\Trajectory.txt</Value>
+    </Setting>
+    <Setting Name="General_Table" Type="System.String" Scope="User">
+      <Value Profile="(Default)">general</Value>
+    </Setting>
+    <Setting Name="Calculated_Table" Type="System.String" Scope="User">
+      <Value Profile="(Default)">calculated</Value>
+    </Setting>
+    <Setting Name="Completnes_Table" Type="System.String" Scope="User">
+      <Value Profile="(Default)">completnes</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -5,17 +5,17 @@ using System.Windows.Forms;
 
 namespace MUAC_STAT
 {
-    public class MySqlHandler
+    public class MySqlGeneralDataHandler
     {
         private string connString;
         private MySqlConnection MySQLconn;
 
-        public class MySQLConnetionString
+        public class MySQLConnection
         {
-            public static string login_name = "root";
-            public static string server_name = "localhost";
-            public static string database = "cbs_stat";
-            public static string table_name = "general";
+            public static string login_name = Properties.Settings.Default.MySqlLogin;
+            public static string server_name = Properties.Settings.Default.MySqlServer;
+            public static string database = Properties.Settings.Default.MySqlDatabase;
+            public static string table_name = Properties.Settings.Default.General_Table;
         }
 
         public void CloseConnection()
@@ -23,11 +23,11 @@ namespace MUAC_STAT
             if (MySQLconn != null)
                 MySQLconn.Close();
         }
-        public void Commit_One_Flight(OneFlightDataSet Data_Set_One_Flight)
+        public void Commit_One_Flight(GeneralDataSet Data_Set_One_Flight)
         {
             //OID, ARCID, IFPLID, ADEP, ADES, EOBD, EOBT, ARCTYPE, REG, ARCADDR, F15, FLAG, TSTARTTIME, TENDTIME, TPOINTS, FLTSOURCE, FLTSTATE, LASTUPD, STATUS, CBSFLTSTATE
 
-            string query = "INSERT INTO " + MySQLConnetionString.table_name +
+            string query = "INSERT INTO " + MySQLConnection.table_name +
                 " (OID, ARCID, IFPLID, ADEP, ADES, EOBD, EOBT, ARCTYPE, REG, ARCADDR, F15, FLAG, TSTARTTIME, TENDTIME, TPOINTS, FLTSOURCE, FLTSTATE, LASTUPD, STATUS, CBSFLTSTATE) " +
                 " VALUES (" + Get_With_Quitation(Data_Set_One_Flight.OID) + "," +
                               Get_With_Quitation(Data_Set_One_Flight.ARCID) + "," +
@@ -67,11 +67,11 @@ namespace MUAC_STAT
         }
 
         //Select statement
-        public List<OneFlightDataSet> SelectGeneralData()
+        public List<GeneralDataSet> SelectGeneralData()
         {
-            string query = "SELECT * FROM " + MySQLConnetionString.table_name;
+            string query = "SELECT * FROM " + MySQLConnection.table_name;
 
-            List<OneFlightDataSet> list = new List<OneFlightDataSet>();
+            List<GeneralDataSet> list = new List<GeneralDataSet>();
 
             //Open connection
             if (MySQLconn.State == System.Data.ConnectionState.Open)
@@ -85,7 +85,7 @@ namespace MUAC_STAT
                 int index = 0;
                 while (dataReader.Read())
                 {
-                    OneFlightDataSet DataSet = new OneFlightDataSet();
+                    GeneralDataSet DataSet = new GeneralDataSet();
 
                     DataSet.OID = dataReader["OID"].ToString();
                     DataSet.ARCID = (string)dataReader["ARCID"];
@@ -147,12 +147,10 @@ namespace MUAC_STAT
             return Time_In.Hour.ToString("00") + Time_In.Minute.ToString("00");
         }
 
-        public void ClearDatabase()
+        public void ClearTable()
         {
 
-            string query = "DELETE FROM " + MySQLConnetionString.table_name;
-
-
+            string query = "DELETE FROM " + MySQLConnection.table_name;
             //create command and assign the query and connection from the constructor
             MySqlCommand cmd = new MySqlCommand(query, MySQLconn);
 
@@ -168,11 +166,11 @@ namespace MUAC_STAT
 
         }
 
-        public bool Initialise(string server, string database, string login, string table)
+        public bool Initialise_General()
         {
             // Set the connection string
-            connString = "server=" + MySQLConnetionString.server_name +
-               ";User Id=" + MySQLConnetionString.login_name + ";database=" + MySQLConnetionString.database;
+            connString = "server=" + MySQLConnection.server_name +
+               ";User Id=" + MySQLConnection.login_name + ";database=" + MySQLConnection.database;
 
             // Open up the connection
             MySQLconn = new MySqlConnection(connString);
@@ -185,8 +183,8 @@ namespace MUAC_STAT
                 }
 
                 // Set the connection string
-                connString = "server=" + MySQLConnetionString.server_name +
-                   ";User Id=" + MySQLConnetionString.login_name + ";database=" + MySQLConnetionString.database;
+                connString = "server=" + MySQLConnection.server_name +
+                   ";User Id=" + MySQLConnection.login_name + ";database=" + MySQLConnection.database;
 
                 // Open up the connection
                 MySQLconn = new MySqlConnection(connString);
